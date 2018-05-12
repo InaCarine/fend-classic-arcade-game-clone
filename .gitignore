@@ -67,3 +67,6 @@ typings/
 # sass
 .sass-cache/
 *.css.map
+*.scss
+
+.eslintrc.json
