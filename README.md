@@ -1,114 +1,37 @@
-frontend-nanodegree-arcade-game
-===============================
+# Classic Arcade Game - Frogger
+This game is a project part of the [Front-end Web Developer nanodegree](https://eu.udacity.com/course/front-end-web-developer-nanodegree--nd001) with Udacity and Google. Here's my other [projects for fend](https://inacarine.github.io/fend).
 
-Students should use this [rubric](https://review.udacity.com/#!/projects/2696458597/rubric) for self-checking their submission. Make sure the functions you write are **object-oriented** - either class functions (like Player and Enemy) or class prototype functions such as Enemy.prototype.checkCollisions, and that the keyword 'this' is used appropriately within your class and class prototype functions to refer to the object the function is called upon. Also be sure that the **readme.md** file is updated with your instructions on both how to 1. Run and 2. Play your arcade game.
+To play the game, head over to this link: https://inacarine.github.io/fend-classic-arcade-game-clone/
 
-For detailed instructions on how to get started, check out this [guide](https://docs.google.com/document/d/1v01aScPjSWCCWQLIpFqvg3-vXLH2e8_SZQKC8jNO0Dc/pub?embedded=true).
+## Objective
+The aim of the game is to get past all the bugs and arrive safely by the water. The player gets three ❤️(lives) which will be lost if hit by any of the bugs, and 5 points will also be taken away from the score. There are also 💎(gems) in three different colors, which gives different points, that can be collected.
 
+So basically, try and collect as many gems as possible before reaching the water! If all lives are lost, the game is over!
 
-## Project instructions
+## How to play
+Select the character you want to play with and hit start! To move the character around use the arrow keys:
 
-- Review the code and comments provided in app.js
-- Identify the various classes you will need to write.
-- Identify and code the properties each class must have to accomplish its tasks.
-- Write the functions that provide functionality to each of your class instances.
-- Review the project rubric to make sure your project is up to spec. For example make sure the functions you write are object-oriented - either class functions (like Player and Enemy) or class prototype functions such as Enemy.prototype.checkCollisions, and that the keyword 'this' is used appropriately within your class and class prototype functions. Also be sure that the readme.md file is updated with your instructions on both how to 1. Run and 2. Play your arcade game.
+- left
+- right
+- up
+- down
 
+### Enemies 🐞
+The enemies comes in from the left, and there's one in each of the rows with pavement. The speed they move at is generated at random. When they leave the screen, their position gets reset so they will come back from the left. They will take a life from the player if hit.
 
-### Frogger Game Description
+### Timer
+The game got a timer, in the top right corner, that shows how long the player use to complete the game.
 
-Your implementation must at minimum follow the basic functionality, but you can add additional optional functionality to your game, if you wish.
+### Score
+In the top center of the game is where the score is being tracked. This gets increased when the player collects gems or decreased if they hit an enemy.
 
-**Basic Functionality**  
-In this game you have a Player and Enemies (Bugs). The goal of the player is to reach the water, without colliding into any one of the enemies. The player can move left, right, up and down. The enemies move in varying speeds on the paved block portion of the scene. Once a the player collides with an enemy, the game is reset and the player moves back to the start square. Once the player reaches the water the game is won.
+### Gems
+The gems gets placed at random and comes in three different color. The colors and points they give are:
+- Blue - gives +5
+- Green - gives +10
+- Orange - gives +20
 
-**Additional Functionality**  
-In addition to the basic functionality, you can add more cool functionality to your game. For example, here are some additional features that you can add:
+The blue gem got a 50% chance to show, the green 30% and the orange 20%.
 
-- Player selection: allow the user to select the image for the player character before starting the game. You can use the different character images provided in the images folder (we’ll get to that below).
-- Score: you can implement a score for the game. For example, the score can increase each time the player reaches the water, and it can be reset to 0 when collision occurs (or it can be reduced).
-- Collectibles: you can add gems to the game, allowing the player to collect them to make the game more interesting.
-- Anything else you like!
-
-**Getting Started**  
-You won’t have to build the game from scratch. We have provided the art assets and game engine for you. You can download or clone them from our repository.
-
-The repository contains css, images, and js folders, as well as an index.html and a README.md file. Once you have downloaded the files we have provided, you will have to edit app.js to build the game.
-
-- The css folder contains a style.css file which you do not need to edit
-- The images folder contains the png image files, which are used when displaying the game. The images for the player and enemy character are going to be loaded from this folder.
-- The js folder also contains the app engine needed to run the game and a resources.js file. You do not need to edit these files.
-- index.html - opening index.html should load the game
-- README.md should contain instructions on how to load and play the game (you will need to add those instructions).
-
-Inside the app.js file, you will need to implement the Player and the Enemy classes, using Object-Oriented JavaScript. Part of the code for the Enemy is provided to you, and you will need to complete the following:
-
-1. The Enemy function, which initiates the Enemy by:
-    - Loading the image by setting this.sprite to the appropriate image in the image folder (already provided)
-    - Setting the Enemy initial location (you need to implement)
-    - Setting the Enemy speed (you need to implement)
-2. The update method for the Enemy
-    - Updates the Enemy location (you need to implement)
-    - Handles collision with the Player (you need to implement)
-3. You can add your own Enemy methods as needed
-
-You will also need to implement the Player class, and you can use the Enemy class as an example on how to get started. At minimum you should implement the following:
-
-1. The Player function, which initiates the Player by:
-    - Loading the image by setting this.sprite to the appropriate image in the image folder (use the code from the Enemy function as an example on how to do that)
-    - Setting the Player initial location
-2. The update method for the Player (can be similar to the one for the Enemy)
-3. The render method for the Player (use the code from the render method for the Enemy)
-4. The handleInput method, which should receive user input, allowedKeys (the key which was pressed) and move the player according to that input. In particular:
-    - Left key should move the player to the left, right key to the right, up should move the player up and down should move the player down.
-    - Recall that the player cannot move off screen (so you will need to check for that and handle appropriately).
-    - If the player reaches the water the game should be reset by moving the player back to the initial location (you can write a separate reset Player method to handle that).
-5. You can add your own Player methods as needed.
-
-Once you have completed implementing the Player and Enemy, you should instantiate them by:
-
-- Creating a new Player object
-- Creating several new Enemies objects and placing them in an array called allEnemies
-
-**Adding your own**  
-If you would like you can add additional functionality to the game. You can add more code to the app.js file and to the Enemy and Player classes to accomplish that.
-
-
-
-## HTML5 Canvas Info
-
-The starting code for the Classic Arcade Game Clone project handles most of the drawing for you. The `<canvas>` element has already been created and the two-dimensional drawing context for the canvas element is available as the ctx object in the app.js file.
-
-**Drawing an Image**  
-In the app.js file, you can see in the Enemy class. This class has a render() method that uses the ctx.drawImage() method. This method takes three parameters: an image, an x-coordinate, and a y-coordinate:
-
-`ctx.drawImage(Resources.get(this.sprite), this.x, this.y);`
-
-**Available Images**  
-In this example, the game engine has a Resources object that caches all of the images needed for the game so you don’t have to wait for them to load during gameplay. The images available to use are listed in engine.js:
-
-```
-Resources.load([
-  'images/stone-block.png',
-  'images/water-block.png',
-  'images/grass-block.png',
-  'images/enemy-bug.png',
-  'images/char-boy.png'
-]);
-```
-
-There are many other images available with the starter code. If you want to use them in your game, all you need to do is include them in the array passed to the Resources.load() method in engine.js near the bottom of the file:
-
-```
-Resources.load([
-    'images/stone-block.png',
-    'images/water-block.png',
-    'images/grass-block.png',
-    'images/enemy-bug.png',
-    'images/char-boy.png',
-    'images/char-pink-girl.png'
-]);
-```
-
-**Expanding on the Existing Capabilities?**  
-It’s unlikely that you’ll need any additional methods of the ctx object for the project. However, if you decide to add additional features to your game, you might want to incorporate some of these methods. If you do, the ctx object is a CanvasRenderingContext2D object. This documentation provides all of the methods that are available to that object.
+## Resources
+All the assets were provided for me by Udacity except for the game menus, which I created myself.
