@@ -168,7 +168,7 @@ var Engine = (function(global) {
         'images/menu-start.png',
         'images/menu-won.png',
         'images/menu-over.png',
-        'images/heart.png',
+        'images/Heart.png',
         'images/gem-blue.png',
         'images/gem-green.png',
         'images/gem-orange.png',

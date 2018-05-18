@@ -169,6 +169,9 @@ const Gem = function() {
     this.y = this.cordsY[Math.floor(Math.random() * this.cordsY.length)];
 };
 
+/*
+* @description Renders the gem on the screen
+*/
 Gem.prototype.render = function() {    
     ctx.drawImage(Resources.get(`images/gem-${this.sprite}.png`), this.x, this.y, 40, 68);
 };
@@ -284,7 +287,7 @@ Game.prototype.scoreLifeRender = function() {
 
     let lifeX = 12;
     for(let i = 1; i <= this.life; i++) {
-        ctx.drawImage(Resources.get('images/heart.png'), lifeX, 51, 27,46);
+        ctx.drawImage(Resources.get('images/Heart.png'), lifeX, 51, 27,46);
         lifeX +=25;
     }
 };
@@ -365,7 +368,6 @@ Game.prototype.start = function() {
 function checkPos(mouseEvent) {
     mouseX = mouseEvent.pageX - this.offsetLeft;
     mouseY = mouseEvent.pageY - this.offsetTop;
-    console.log(mouseX);
 }
 
 function checkClick(mouseEvent) {
