@@ -152,13 +152,13 @@ const Gem = function() {
     this.randomNum = Math.floor(Math.random()*100);
 
     if (this.randomNum >= 50 && this.randomNum < 80) {
-        this.sprite = 'green'
+        this.sprite = 'green';
         this.value = 10;
     } else if (this.randomNum >= 80) {
-        this.sprite = 'orange'
+        this.sprite = 'orange';
         this.value = 20;
     } else {
-        this.sprite = 'blue'
+        this.sprite = 'blue';
         this.value = 5;
     }
 
