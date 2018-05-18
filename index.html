@@ -2,12 +2,52 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Effective JavaScript: Frogger</title>
+    <title>Effective JavaScript: Frogger | Ina Carine</title>
     <link rel="stylesheet" href="css/style.css">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <meta name="description" content=" Hi, I'm Ina. I'm a front-end desinger. This is one of the projects I did for the fend nanodegree with Udacity and Google." />
+    
+    <link rel="shortcut icon" href="https://inacarine.github.io/fend/assets/images/favicons/favicon-2.ico" />
+    
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600" rel="stylesheet">
+    <link rel="stylesheet" href="https://inacarine.github.io/fend/assets/css/main.css">
 </head>
 <body>
+    <header class="header">
+        <div class="l-container l-flex--justify">
+            <a href="/fend" class="logo link-underlined" aria-label="home">
+                <svg xmlns="http://www.w3.org/2000/svg" width="128" height="126" viewbox="0 0 128 126">
+                    <defs>
+                        <linearGradient id="grad1" x1="0%" y1="0%" y2="0%">
+                            <stop offset="0%" stop-color="var(--c-primary-dark, #4e1879)" />
+                            <stop offset="100%" stop-color="var(--c-primary, #c90964)" />
+                        </linearGradient>
+                    </defs>
+                    <path d="M12 49c0 21-8 66 22 66 43 0 9-72 55-72 34 0 27 60 27 72" fill="none" stroke-width="20" stroke="url(#grad1)" stroke-linecap="square" stroke-miterlimit="3" />
+                    <path fill="url(#grad1)" d="M0 13a13 13 0 1 1 26 0 13 13 0 0 1-26 0z" />
+                </svg>
+            </a>
+            <button class="burgermenu jsMenu" aria-label="menu" aria-expanded="false">
+                <span class="bugermenu__line"></span>
+                <span class="bugermenu__line"></span>
+            </button>
+            <nav class="main-nav jsMainNav" aria-label="site" hidden>
+                <a class="nav__link link-underlined" href="https://inacarine.github.io/fend/work">Work</a>
+                <a class="nav__link link-underlined">About</a>
+                <a class="nav__link link-underlined">Contact</a>
+            </nav>
+        </div>
+    </header>
+    <script src="https://inacarine.github.io/fend/assets/js/main.js"></script>
     <script src="js/resources.js"></script>
     <script src="js/engine.js"></script>
     <script src="js/app.js"></script>
+    <footer class="footer">
+        <div class="l-container">
+            <p><small>©2018 - Ina Carine</small></p>
+        </div>
+    </footer>
 </body>
 </html>

@@ -2,15 +2,7 @@ body {
   text-align: center;
 }
 
-.gameOverlay {
-  position: absolute;
-  width: 505px;
-  background-color: #a55c44;
-  padding: 2rem;
-  height: 537px;
-  box-sizing: border-box;
-  margin-top: 49px;
-  border-radius: 5px;
-  left: calc(50% - (505px/2));
-  left: 136px;
+footer {
+  margin-top: 2vh;
+  text-align: left;
 }
