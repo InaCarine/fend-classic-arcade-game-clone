@@ -70,3 +70,4 @@ typings/
 *.scss
 
 .eslintrc.json
+.babelrc
