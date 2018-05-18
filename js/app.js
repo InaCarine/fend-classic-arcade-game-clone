@@ -34,7 +34,7 @@ Enemy.prototype.update = function(dt) {
 */
 Enemy.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-    ctx.strokeRect(this.x, this.y+75, 101, 70);
+    //ctx.strokeRect(this.x, this.y+75, 101, 70);
 };
 
 
@@ -78,7 +78,7 @@ Player.prototype.update = function () {
 Player.prototype.render = function () {
     typeof game.charSelected === 'object' ? this.sprite = game.charSelected.sprite : this.sprite;
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-    ctx.strokeRect(this.x+15, this.y + 60, 70, 80);
+    //ctx.strokeRect(this.x+15, this.y + 60, 70, 80);
 };
 
 /*
