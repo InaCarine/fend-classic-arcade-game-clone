@@ -66,8 +66,8 @@ Player.prototype.update = function () {
         setTimeout(() => {
             game.paused = 1;
             game.status = 'won';
-            canvas.addEventListener("mousemove", checkPos);
-            canvas.addEventListener("mouseup", checkClick);
+            canvas.addEventListener('mousemove', checkPos);
+            canvas.addEventListener('mouseup', checkClick);
         }, 500);
     }
 };
@@ -117,15 +117,15 @@ const Timer = function() {
 * @description Draws the timer on the canvas
 */
 Timer.prototype.render = function() {
-    ctx.font = "16px Arial";
-    ctx.fillStyle = "#fff";
+    ctx.font = '16px Arial';
+    ctx.fillStyle = '#fff';
     ctx.fillText(`Time: ${this.minutes}:${this.seconds}`, ctx.canvas.width-90, 80);
 };
 
-  /*
-  * @description updates the timer in minutes:seconds
-  * @credit https://stackoverflow.com/questions/1210701/compute-elapsed-time
-  */
+/*
+* @description updates the timer in minutes:seconds
+* @credit https://stackoverflow.com/questions/1210701/compute-elapsed-time
+*/
 Timer.prototype.update = function() {
     if(game.paused) return;
     this.endTime = new Date();
@@ -192,10 +192,10 @@ const Game = function() {
 
     this.charPosY = 175;
     this.chars = [
-        {sprite: `images/char-horn-girl.png`, posX: 90},
-        {sprite: `images/char-cat-girl.png`, posX: 200},
-        {sprite: `images/char-pink-girl.png`, posX: 310},
-    ]
+        {sprite: 'images/char-horn-girl.png', posX: 90},
+        {sprite: 'images/char-cat-girl.png', posX: 200},
+        {sprite: 'images/char-pink-girl.png', posX: 310},
+    ];
     this.charSelected = this.chars[0];
 
     this.gem = new Gem();
@@ -239,8 +239,8 @@ Game.prototype.checkCollisions = function() {
             if(this.life === 0) {
                 game.paused = 1;
                 game.status = 'over';
-                canvas.addEventListener("mousemove", checkPos);
-                canvas.addEventListener("mouseup", checkClick);
+                canvas.addEventListener('mousemove', checkPos);
+                canvas.addEventListener('mouseup', checkClick);
             }
         }
     });
@@ -251,7 +251,7 @@ Game.prototype.checkCollisions = function() {
         this.score += this.gem.value;  
         this.gem = new Gem('blue');
     }
-}
+};
 
 /*
 * @description renders the different menus on the screen
@@ -261,28 +261,28 @@ Game.prototype.renderMenus = function() {
     ctx.drawImage(Resources.get(sprite), 5, 101);
 
     if(this.status === 'won') {
-        ctx.font = "30px Arial";
-        ctx.fillStyle = "#555";
+        ctx.font = '30px Arial';
+        ctx.fillStyle = '#555';
         ctx.fillText(`Time: ${this.timer.minutes}:${this.timer.seconds}`, 276, 322);
 
         ctx.fillText(`Score: ${this.score}`, 90, 322);
     } else if(this.status === 'start') {
 
-        let selector = `images/Selector.png`;
+        let selector = 'images/Selector.png';
         ctx.drawImage(Resources.get(selector), this.charSelected.posX, this.charPosY);
 
         this.chars.forEach(char => {
             ctx.drawImage(Resources.get(char.sprite), char.posX, this.charPosY);
         });
     }
-}
+};
 
 /*
 * @description renders the score on the screen
 */
 Game.prototype.scoreLifeRender = function() {
-    ctx.font = "16px Arial";
-    ctx.fillStyle = "#fff";
+    ctx.font = '16px Arial';
+    ctx.fillStyle = '#fff';
     ctx.fillText(`Score: ${this.score}`, ctx.canvas.width/2-30, 80);
 
     let lifeX = 12;
@@ -326,17 +326,17 @@ Game.prototype.update = function(dt) {
     }
 
     if (this.status === 'start') {
-        let selector = `images/Selector.png`;
+        let selector = 'images/Selector.png';
         ctx.drawImage(Resources.get(selector), this.charSelected.posX, this.charPosY);
     }
-}
+};
 
 /*
 * @description resets the game
 */
 Game.prototype.reset = function() {
-    canvas.removeEventListener("mousemove", checkPos);
-    canvas.removeEventListener("mouseup", checkClick);
+    canvas.removeEventListener('mousemove', checkPos);
+    canvas.removeEventListener('mouseup', checkClick);
     
     player.x = player.startPos[0];
     player.y = player.startPos[1];
@@ -348,18 +348,18 @@ Game.prototype.reset = function() {
     
     this.paused = 0;
     this.timer.startTime = new Date();
-}
+};
 
 /*
 * @description Starts the game
 */
 Game.prototype.start = function() {
-    canvas.removeEventListener("mousemove", checkPos);
-    canvas.removeEventListener("mouseup", checkClick);
+    canvas.removeEventListener('mousemove', checkPos);
+    canvas.removeEventListener('mouseup', checkClick);
     this.paused = 0;
     player.x = player.startPos[0];
     player.y = player.startPos[1];
-    this.timer.startTime = new Date()
+    this.timer.startTime = new Date();
 };
 
 
@@ -370,7 +370,7 @@ function checkPos(mouseEvent) {
     mouseY = mouseEvent.pageY - this.offsetTop;
 }
 
-function checkClick(mouseEvent) {
+function checkClick() {
     if (mouseX > 138 && mouseX < 368) {
         if (mouseY > 368 && mouseY < 412) {            
             if(game.status === 'won' || game.status === 'over'){
@@ -401,8 +401,8 @@ game.addEnemies();
 let mouseX;
 let mouseY;
 
-canvas.addEventListener("mousemove", checkPos);
-canvas.addEventListener("mouseup", checkClick);
+canvas.addEventListener('mousemove', checkPos);
+canvas.addEventListener('mouseup', checkClick);
 
 
 

@@ -2,7 +2,12 @@
 This game is a project part of the [Front-end Web Developer nanodegree](https://eu.udacity.com/course/front-end-web-developer-nanodegree--nd001) with Udacity and Google.  
 Here's my other [projects for fend](https://inacarine.github.io/fend).
 
-**To play the game**, head over to this link: https://inacarine.github.io/fend-classic-arcade-game-clone/
+## Instructions
+To play the game, head over to this link: https://inacarine.github.io/fend-classic-arcade-game-clone/
+
+Or you can:
+1. **Download the files:** click the 'clone or download' button and chose to download the game as a ZIP file. You then need to unzip the files so you can open the index.html file in your preferred browser. You are then good to go!
+2. **Using git:** You will need [git](https://git-scm.com/) installed on your computer. In the command line, run this command `$ git clone https://github.com/InaCarine/fend-classic-arcade-game-clone.git`, and the files will be cloned to your computer. When finished, open the index.html in your browser.
 
 ## Objective
 The aim of the game is to get past all the bugs and arrive safely by the water. The player gets three ❤️(lives) which will be lost if hit by any of the bugs, and 5 points will also be taken away from the score. There are also 💎(gems) in three different colors, which gives different points, that can be collected.
