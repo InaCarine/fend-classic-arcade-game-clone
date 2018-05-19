@@ -14,6 +14,8 @@ The aim of the game is to get past all the bugs and arrive safely by the water. 
 
 So basically, try and collect as many gems as possible before reaching the water! If all lives are lost, the game is over!
 
+![Screenshot from the game](/images/screenshot.jpg)
+
 ## How to play
 Select the character you want to play with and hit start! To move the character around use the arrow keys:
 
