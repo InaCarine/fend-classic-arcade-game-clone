@@ -1,8 +1,7 @@
 # Classic Arcade Game - Frogger
 This is a game that is based on the classic arcade game [Frogger](https://en.wikipedia.org/wiki/Frogger). The player starts off with three lives and needs to make it safely over to the other side without hitting any of the enemies. See below for a screenshot of the game.
 
-This was a project part of the [Front-end Web Developer nanodegree](https://eu.udacity.com/course/front-end-web-developer-nanodegree--nd001) with Udacity and Google. The original files for the project can be found at [Udacity's GitHub profile](https://github.com/udacity/frontend-nanodegree-arcade-game).  
-Here's my other [projects for fend](https://inacarine.github.io/fend).
+This was a project part of the [Front-end Web Developer nanodegree](https://eu.udacity.com/course/front-end-web-developer-nanodegree--nd001) with Udacity and Google. The original files for the project can be found at [Udacity's GitHub profile](https://github.com/udacity/frontend-nanodegree-arcade-game). Here's my other [projects for fend](https://inacarine.github.io/fend).
 
 ![Screenshot from the game](/images/screenshot.jpg)
 

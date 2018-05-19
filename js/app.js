@@ -1,14 +1,25 @@
 'use strict';
 
 /*
-* @description Represents an enemy
+* @description app.js sets up all the functionality that are needed for adding the
+* different elements to the game, like the enemies, player, score, timer etc.
+* This file requires resources.js and engine.js to be loaded first.
+*
+* @author Ina Carine
+* @date 19/05/2018
+*/
+
+/*
+* @description Represents an enemy and the methods it can use
+* are update(dt) & render()
 * @constructor
 */
 var Enemy = function() {
     this.sprite = 'images/enemy-bug.png';
+    // The enemy gets a random starting position & speed
     this.x = Math.floor(Math.random() * (-500 + 105)) - 105;
     this.y = 60;
-    this.speed = Math.floor(Math.random() * (350 - 200)) + 200;
+    this.speed = Math.floor(Math.random() * (350 - 200)) + 200; // (max - min) + min
     this.collided = 0;
 };
 
@@ -40,7 +51,8 @@ Enemy.prototype.render = function() {
 
 
 /*
-* @description Represents a Player
+* @description Represents a Player, that got the following
+* methods: update(), render(), handleInput(direction)
 * @constructor
 */
 const Player = function() {
@@ -54,7 +66,7 @@ const Player = function() {
 
     this.x = this.startPos[0];
     this.y = 800;
-    this.collided = 0;
+    this.collided = 0; // keeps track of if the player have collied with an enemy
 };
 
 /*
@@ -62,6 +74,8 @@ const Player = function() {
 */
 Player.prototype.update = function () {
     // if player reaches the water the game is won
+    // Resets player position and change the games status to won.
+    // Event listeners are added for the play again button
     if(this.y < 60 && !this.collided) {
         setTimeout(() => {
             game.paused = 1;
@@ -76,6 +90,7 @@ Player.prototype.update = function () {
 * @description Draws the player on the canvas
 */
 Player.prototype.render = function () {
+    // Checks if the charSelected is an object, if so set this as the image
     typeof game.charSelected === 'object' ? this.sprite = game.charSelected.sprite : this.sprite;
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
     //ctx.strokeRect(this.x+15, this.y + 60, 70, 80);
@@ -86,8 +101,10 @@ Player.prototype.render = function () {
 * @param {string} direction
 */
 Player.prototype.handleInput = function (direction) {
+    // Stops the player from moving
     if(this.collided || game.paused) return;
 
+    // Move the player only if he is inside the canvas
     if(direction === 'up' && this.y > this.height) {
         this.y -= this.height;
     } else if(direction === 'down' && this.y < ctx.canvas.height - 136 - this.height) {
@@ -102,7 +119,8 @@ Player.prototype.handleInput = function (direction) {
 
 
 /*
-* @description Represents a Timer
+* @description Represents a Timer with the following methods:
+* render(), update()
 * @constructor
 */
 const Timer = function() {
@@ -127,7 +145,9 @@ Timer.prototype.render = function() {
 * @credit https://stackoverflow.com/questions/1210701/compute-elapsed-time
 */
 Timer.prototype.update = function() {
+    // Dont update timer if game is paused
     if(game.paused) return;
+    
     this.endTime = new Date();
     let timeDiff = this.endTime - this.startTime;
     // strip the ms
@@ -146,9 +166,11 @@ Timer.prototype.update = function() {
 
 /*
 * @description Represents a gem that increses the score
+* methods: render()
 * @constructor
 */
 const Gem = function() {
+    // Sets the chance the different gems can spawn at
     this.randomNum = Math.floor(Math.random()*100);
 
     if (this.randomNum >= 50 && this.randomNum < 80) {
@@ -162,9 +184,11 @@ const Gem = function() {
         this.value = 5;
     }
 
+    // The cords were a gem can spawn. row & col
     this.cordsX = [28, 130, 232, 334, 436];
     this.cordsY = [210, 295, 376];
 
+    // Spawn the gem in a random pos, based on cords above
     this.x = this.cordsX[Math.floor(Math.random()*this.cordsX.length)];
     this.y = this.cordsY[Math.floor(Math.random() * this.cordsY.length)];
 };
@@ -178,7 +202,9 @@ Gem.prototype.render = function() {
 
 
 /*
-* @description Represents the game
+* @description Represents the game, which got the following
+* methods: addEnemies(), checkCollisions(), renderMenus()
+* scoreLifeRender(), render(), update(), start(), reset()
 * @constructor
 */
 const Game = function() {
@@ -191,11 +217,13 @@ const Game = function() {
     this.life = 3;
 
     this.charPosY = 175;
+    // list of possible chars that can be selected at start
     this.chars = [
         {sprite: 'images/char-horn-girl.png', posX: 90},
         {sprite: 'images/char-cat-girl.png', posX: 200},
         {sprite: 'images/char-pink-girl.png', posX: 310},
     ];
+    // Sets a default char
     this.charSelected = this.chars[0];
 
     this.gem = new Gem();
@@ -225,17 +253,24 @@ Game.prototype.checkCollisions = function() {
         const posX = enemy.x - 85 <= player.x && enemy.x + 90 >= player.x;
         const posY = enemy.y - 80 <= player.y && enemy.y + 65 >= player.y;
 
+        // !enemy.collided - stops it from triggering more than once
+        // after the player have collided with an enemy
         if (posY && posX && !enemy.collided) {
             player.collided = 1;
             enemy.collided = 1;
+            // Sets a delay after collision before player gets put back to start
             setTimeout(() => {
                 player.x = player.startPos[0];
                 player.y = player.startPos[1];
                 player.collided = 0;
                 enemy.collided = 0;
             }, 300);
+            
             this.score -= 5;
             this.life--;
+            
+            // If no more life left, change the games status to over to trigger the
+            // gameover menu
             if(this.life === 0) {
                 game.paused = 1;
                 game.status = 'over';
@@ -245,11 +280,12 @@ Game.prototype.checkCollisions = function() {
         }
     });
     
+    // When player hits a game, add its value to the score
     if(player.x > this.gem.x-35 && player.x < this.gem.x+35 &&
         player.y > this.gem.y-82 && player.y < this.gem.y
     ){
         this.score += this.gem.value;  
-        this.gem = new Gem('blue');
+        this.gem = new Gem();
     }
 };
 
@@ -257,6 +293,7 @@ Game.prototype.checkCollisions = function() {
 * @description renders the different menus on the screen
 */
 Game.prototype.renderMenus = function() {
+    // renders a menu based on the games status
     let sprite = `images/menu-${this.status}.png`;
     ctx.drawImage(Resources.get(sprite), 5, 101);
 
@@ -268,6 +305,7 @@ Game.prototype.renderMenus = function() {
         ctx.fillText(`Score: ${this.score}`, 90, 322);
     } else if(this.status === 'start') {
 
+        // to show which char is seleted
         let selector = 'images/Selector.png';
         ctx.drawImage(Resources.get(selector), this.charSelected.posX, this.charPosY);
 
@@ -293,7 +331,8 @@ Game.prototype.scoreLifeRender = function() {
 };
 
 /*
-* @description renders all the different elements for the game
+* @description master function that renders all the 
+* different elements for the game
 */
 Game.prototype.render = function() {
 
@@ -313,7 +352,8 @@ Game.prototype.render = function() {
 };
 
 /*
-* @description updates all the different elements in the game
+* @description master function that updates all the 
+* different elements in the game
 */
 Game.prototype.update = function(dt) {
     if (!this.paused) {
@@ -326,6 +366,7 @@ Game.prototype.update = function(dt) {
     }
 
     if (this.status === 'start') {
+        // changes the selector based on which chars been selected
         let selector = 'images/Selector.png';
         ctx.drawImage(Resources.get(selector), this.charSelected.posX, this.charPosY);
     }
@@ -335,6 +376,7 @@ Game.prototype.update = function(dt) {
 * @description resets the game
 */
 Game.prototype.reset = function() {
+    // remove the event listeners for the buttons
     canvas.removeEventListener('mousemove', checkPos);
     canvas.removeEventListener('mouseup', checkClick);
     
@@ -363,13 +405,20 @@ Game.prototype.start = function() {
 };
 
 
-
-// https://code.tutsplus.com/tutorials/animating-game-menus-and-screen-transitions-in-html5-a-guide-for-flash-developers--active-11183
+/*
+* @description finds the position of the mouse on the canvas
+* and checkClick() is from the link below
+* @credit https://code.tutsplus.com/tutorials/animating-game-menus-and-screen-transitions-in-html5-a-guide-for-flash-developers--active-11183
+*/
 function checkPos(mouseEvent) {
     mouseX = mouseEvent.pageX - this.offsetLeft;
     mouseY = mouseEvent.pageY - this.offsetTop;
 }
 
+/*
+* @description checks if the mouse click is over the buttons
+* or one of the characters that can be selected at start
+*/
 function checkClick() {
     if (mouseX > 138 && mouseX < 368) {
         if (mouseY > 368 && mouseY < 412) {            
@@ -393,6 +442,7 @@ function checkClick() {
 }
 
 
+// Starts and setups the game
 const game = new Game();
 const player = new Player();
 
