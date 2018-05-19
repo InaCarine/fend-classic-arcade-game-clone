@@ -1,6 +1,11 @@
 # Classic Arcade Game - Frogger
-This game is a project part of the [Front-end Web Developer nanodegree](https://eu.udacity.com/course/front-end-web-developer-nanodegree--nd001) with Udacity and Google.  
+This is a game that is based on the classic arcade game [Frogger](https://en.wikipedia.org/wiki/Frogger). The player starts off with three lives and needs to make it safely over to the other side without hitting any of the enemies. See below for a screenshot of the game.
+
+This was a project part of the [Front-end Web Developer nanodegree](https://eu.udacity.com/course/front-end-web-developer-nanodegree--nd001) with Udacity and Google. The original files for the project can be found at [Udacity's GitHub profile](https://github.com/udacity/frontend-nanodegree-arcade-game).  
 Here's my other [projects for fend](https://inacarine.github.io/fend).
+
+![Screenshot from the game](/images/screenshot.jpg)
+
 
 ## Instructions
 To play the game, head over to this link: https://inacarine.github.io/fend-classic-arcade-game-clone/
@@ -13,8 +18,6 @@ Or you can:
 The aim of the game is to get past all the bugs and arrive safely by the water. The player gets three ❤️(lives) which will be lost if hit by any of the bugs, and 5 points will also be taken away from the score. There are also 💎(gems) in three different colors, which gives different points, that can be collected.
 
 So basically, try and collect as many gems as possible before reaching the water! If all lives are lost, the game is over!
-
-![Screenshot from the game](/images/screenshot.jpg)
 
 ## How to play
 Select the character you want to play with and hit start! To move the character around use the arrow keys:
